@@ -24,7 +24,7 @@
 </body>
     <style>
         .custom-login{
-            height: 600px;
+            height: 550px;
             padding-top: 100px;
         }
     </style>
