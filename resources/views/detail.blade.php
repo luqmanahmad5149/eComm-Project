@@ -7,6 +7,8 @@
             </div>
             <div class="col-sm-6">
                 <a href="/">Go Back</a>
+                <a href="/detail/{{ $product['id'] }}/update" class="btn btn-success">Update</a>
+                <a href="/removeproduct/{{ $product['id'] }}" class="btn btn-warning">Remove</a>
                 <h2>{{ $product['name'] }}</h2>
                 <h3>RM {{ $product['price'] }}</h3>
                 <h4>Details: {{ $product['description'] }}</h4>

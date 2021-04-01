@@ -90,4 +90,58 @@ class ProductController extends Controller
         $req->input();
         return redirect('/');
     }
+    public function myOrders()
+    {
+        $userId = Session::get('user')['id'];
+        $orders = DB::table('orders')
+        ->join('products', 'orders.product_id', '=', 'products.id')
+        ->where('orders.user_id', $userId)
+        ->get();
+
+        return view('myorders', ['orders'=> $orders]);
+    }
+    public function addProduct()
+    {
+        return view('createproduct');
+    }
+    public function createProduct(Request $req)
+    {
+        $create = new Product();
+        $create->name = $req->name;
+        $create->price = $req->price;
+        $create->category = $req->category;
+        $create->description = $req->description;
+        $create->gallery = $req->gallery;
+        $create->save();
+        return redirect('/');
+    }
+    public function updateProduct($id)
+    {
+        $product = Product::find($id);
+        return view('updateproduct', ['product'=> $product]);
+    }
+    public function editProduct(Product $product)
+    {
+        request()->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'gallery' => 'required',
+        ]);
+        
+        $product->update([
+            'name' => request('name'),
+            'price' => request('price'),
+            'category' => request('category'),
+            'description' => request('description'),
+            'gallery' => request('gallery'),
+        ]);
+        return redirect('/');
+    }
+    public function removeProduct($id)
+    {
+        Product::destroy($id);
+        return redirect('/');
+    }
 }

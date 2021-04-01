@@ -15,7 +15,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <title>eComm</title>
+    <title>Cheap Electronics</title>
 </head>
 <body>
     {{ View::make('header') }}
@@ -32,6 +32,12 @@
         }
         .custom-product{
             height: 600px;
+            margin-bottom: 50px;
+        }
+        .create-product{
+            height: 600px;
+            margin-bottom: 50px;
+            padding: 30px;
         }
         .slider-text{
             background-color: #35443585 !important;
